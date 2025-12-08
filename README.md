@@ -1,31 +1,31 @@
 # Fast Tools for Programming 🛠️
 
-**Autor:** [Tito de Barros Junior] | [titobarrosjr@hotmail.com.com] | [LinkedIn/GitHub]  
+**Author:** [Tito de Barros Junior] | [titobarrosjr@hotmail.com] | [https://www.linkedin.com/in/titobarros//https://github.com/TitoBarrosTI/]  
 **⭐ Star se ajudar!** | **🐛 Issues bem-vindas**
 
-## 🎯 Funcionalidades
-- 🔑 Gerador de senhas personalizadas  
-- 🆔 Gerador de GUID  
-- 🔐 Gerador de HASH  
-- 🖼️ Leitura de arquivos Base64 e exibição da imagem  
-- 🔁 Conversão de imagem para Base64  
-- 🔎 Busca de texto em arquivos `.txt` *(em desenvolvimento)*
+## 🎯 Features
+- 🔑 Custom password generator
+- 🆔 GUID generator
+- 🔐 Hash generator
+- 🖼️ Base64 file reading and image display
+- 🔁 Image to Base64 conversion
+- 🔎 Text search in files `.txt` *(under development)*
 
-## 🚀 Instalação
-git clone https://github.com/seuusuario/fast-tools-programming.git
+## 🚀 Instalation
+git clone https://github.com/titobarrosti/fast-tools-programming.git
 cd fast-tools-programming
 pip install -r requirements.txt
 python main.py
 
-## 📋 Requisitos
+## 📋 Requirements
 - Python 3.12.0
 - PySide6 (Qt for Python) 
-- Bibliotecas padrão: `secrets`, `base64`, `os`, `sys`
+- Standard libraries: `secrets`, `base64`, `os`, `sys`
 
-## 📦 Executável
-O projeto pode ser convertido para .exe via PyInstaller.
+## 📦 Executable
+The project can be converted to .exe via PyInstaller.
 
-## 📁 Estrutura
+## 📁 Structure
 fast-tools-programming/
 ├── main.py # App principal (PySide6)
 ├── requirements.txt
@@ -38,11 +38,11 @@ fast-tools-programming/
 ![Base64 Imagem][image:2]
 
 ## 🔮 Roadmap
-- [x] Gerador Senhas
+- [x] Password Generator
 - [x] Base64 Decoder
 - [ ] Hash Generator
-- [x] Text File Search
+- [ ] Text File Search
 - [ ] GUID Generator
 
 ## 📄 Licence
-MIT License - veja [LICENSE](LICENSE)
+MIT License - see [LICENSE]
