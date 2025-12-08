@@ -1,6 +1,6 @@
 # Fast Tools for Programming 🛠️
 
-**Author:** [Tito de Barros Junior] | [titobarrosjr@hotmail.com] | [https://www.linkedin.com/in/titobarros//https://github.com/TitoBarrosTI/]  
+**Author:** [Tito de Barros Junior] | [titobarrosjr@hotmail.com] | [https://www.linkedin.com/in/titobarros | https://github.com/TitoBarrosTI/]  
 **⭐ Star se ajudar!** | **🐛 Issues bem-vindas**
 
 ## 🎯 Features
