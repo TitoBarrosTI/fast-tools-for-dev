@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.spec
+
+# Virtual environment
+venv/
+.env/
+
+# Build of executable
+build/
+dist/
+
+# Qt / PySide
+*.ui~
+*.qrc
+
+# IDE
+.vscode/
+.idea/
+
+# Sistem
+.DS_Store
+Thumbs.db
