@@ -1,48 +1,69 @@
-# Fast Tools for Programming 🛠️
 
-**Author:** [Tito de Barros Junior] | [titobarrosjr@hotmail.com] | [https://www.linkedin.com/in/titobarros | https://github.com/TitoBarrosTI/]  
-**⭐ Star se ajudar!** | **🐛 Issues bem-vindas**
+![Python](https://img.shields.io/badge/Python-3.12-blue)
+![PySide6](https://img.shields.io/badge/GUI-PySide6-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Status](https://img.shields.io/badge/Status-Active-brightgreen)
+![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey)
 
-## 🎯 Features
-- 🔑 Custom password generator
-- 🆔 GUID generator
-- 🔐 Hash generator
-- 🖼️ Base64 file reading and image display
-- 🔁 Image to Base64 conversion
-- 🔎 Text search in files `.txt` *(under development)*
+---
 
-## 🚀 Instalation
-git clone https://github.com/titobarrosti/fast-tools-programming.git
-cd fast-tools-programming
+## 🔎 About  
+Fast Tools for Programming is a lightweight utility desktop app built with **Python + PySide6**.  
+It provides quick-access tools developers often need during daily work: password generation, Base64 utilities, GUID creation, hashing, and text search.  
+Simple, clean, fast, and designed for productivity.
+
+---
+
+## ✨ Features
+```
+- Password generator  
+- GUID generator *(queued for development)*
+- Hash generator *(queued for development)*
+- Base64 file decoder + image preview  
+- Image → Base64 converter *(queued for development)*
+- Text search in `.txt` files *(under development)*
+```
+
+---
+
+## 🚀 Installation
+```bash
+git clone https://github.com/titobarrosti/fast-tools-for-dev.git
+cd fast-tools-for-dev
 pip install -r requirements.txt
 python main.py
-
+```
+---
 ## 📋 Requirements
-- Python 3.12.0
-- PySide6 (Qt for Python) 
-- Standard libraries: `secrets`, `base64`, `os`, `sys`
+```
+Python 3.12
+PySide6
+Standard libraries: secrets, base64, os, sys
+```
+---
 
-## 📦 Executable
-The project can be converted to .exe via PyInstaller.
+## 📦 Build Executable
+```bash
+pyinstaller --noconsole --onefile main.py
+```
 
-## 📁 Structure
-fast-tools-programming/
-├── main.py # App principal (PySide6)
+## 📁 Project Structure
+```
+fast-tools-for-dev/
+├── main.py
 ├── requirements.txt
 ├── README.md
 ├── LICENSE
-└── screenshots/ # Imagens das abas
+```
+---
+## 🛣️ Roadmap
+ ```
+ Password Generator
+ Base64 Decoder
+ Hash Generator
+ Text Search Tool (under development)
+ GUID Generator
+ ```
 
-## 🖥️ Screenshots
-![Gerador Senhas][image:1]  
-![Base64 Imagem][image:2]
-
-## 🔮 Roadmap
-- [x] Password Generator
-- [x] Base64 Decoder
-- [ ] Hash Generator
-- [ ] Text File Search
-- [ ] GUID Generator
-
-## 📄 Licence
-MIT License - see [LICENSE]
+## 📄 License
+MIT License — see [LICENSE]
