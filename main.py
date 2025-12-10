@@ -1,11 +1,11 @@
 import sys
 import os
 
-from PySide6.QtWidgets import QApplication, QMainWindow
+from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox
 from PySide6.QtUiTools import loadUiType
-from rules import showBase64, generatePass, is_base64_image
+from rules import showBase64, generatePass, is_base64_image, selectFile, seekText
 
-# === CORREÇÃO PARA FUNCIONAR NO .EXE ===
+# === TO EMBED DESIGNER IN EXECUTABLE ===
 def resource_path(relative_path):
     if hasattr(sys, "_MEIPASS"):
         return os.path.join(sys._MEIPASS, relative_path)
@@ -14,8 +14,6 @@ def resource_path(relative_path):
 ui_path = resource_path("main_window.ui")
 Ui_MainWindow, BaseClass = loadUiType(ui_path)  # type: ignore
 # ======================================
-
-# Ui_MainWindow, BaseClass = loadUiType("main_window.ui") # type: ignore
 
 class MainWindow(BaseClass, Ui_MainWindow):
     def __init__(self):
@@ -29,7 +27,30 @@ class MainWindow(BaseClass, Ui_MainWindow):
         self.btnGenB64.clicked.connect(self.on_click_gen64)
         self.btnGenPass.clicked.connect(self.on_click_genpass)
         self.btnCopyPass.clicked.connect(self.on_click_genpass_copy)
+        self.btnOpenFileText.clicked.connect(self.on_click_open_file_text)
+        self.btnSearchInFile.clicked.connect(self.on_click_seek_text)
 
+    def on_click_open_file_text(self):
+        content = selectFile(self)
+        if content:
+            self.textFile.setPlainText(content)
+
+    def on_click_seek_text(self):
+        results = seekText(self.lnEdSearchInFile.text(), self.textFile.toPlainText())
+
+        if results:
+            QMessageBox.information(
+                     self,
+                    'Results',
+                    '\n'.join(results)
+                )
+        else:
+                QMessageBox.information(
+                    self,
+                    'Results',
+                    'No matches found.'
+            )
+    
     def on_click_obtainB64(self):
         from PySide6.QtWidgets import QFileDialog
         path, _ = QFileDialog.getOpenFileName(
