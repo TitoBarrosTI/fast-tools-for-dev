@@ -73,3 +73,45 @@ def is_base64_image(data: str) -> bool:
             return True
 
     return False
+
+def selectFile(parent):
+    from PySide6.QtWidgets import QFileDialog
+    path, _ = QFileDialog.getOpenFileName(parent,'Choose a file','','All files (*.*)')
+
+    if not path:
+        return None
+    
+    if path:
+        with open(path,'r',encoding='utf-8', errors='ignore') as f:
+            return f.read()
+        
+def seekText(pattern, data:str ):
+    if not isinstance(pattern, str) or not pattern or not isinstance(data, str) or not str:
+        return []
+    
+    results = []
+    ocurrence = 0
+    MAX_SHOW = 10
+
+    for num_line, line in enumerate(data.splitlines(), start=1):
+        begin = 0
+        while True:
+            pos = line.find(pattern, begin)
+            if pos == -1:
+                break
+            
+            ocurrence +=1
+            
+            if ocurrence <= MAX_SHOW:
+                if ocurrence == 1:
+                    results.append(
+                        f'Founded:\n\non the line {num_line}, collumn {pos}: {line}.strip()')
+                else:
+                    results.append(f'on the line {num_line}, collumn {pos}: {line}'.strip())
+            
+            begin = pos + len(pattern)
+
+    if ocurrence > MAX_SHOW:
+        results.append(f'\n\n there may be more {(ocurrence-10)} ocurrences')
+
+    return results
