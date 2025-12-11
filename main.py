@@ -67,7 +67,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
                     else: self.btnGenB64.setEnabled(False)
     
     def on_click_gen64(self):
-        if not self.textBrowser.toPlainText().strip():
+        if not self.textFile.toPlainText().strip():
             b64text = self.txtB64.toPlainText()
             showBase64(self,b64text,self.lblImgB64)
     
