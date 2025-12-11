@@ -495,7 +495,7 @@
        </rect>
       </property>
       <property name="placeholderText">
-       <string>input your search text here</string>
+       <string>input your search text here and press ENTER</string>
       </property>
      </widget>
     </widget>

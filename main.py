@@ -8,11 +8,11 @@ from rules import showBase64, generatePass, is_base64_image, selectFile, seekTex
 # === TO EMBED DESIGNER IN EXECUTABLE ===
 def resource_path(relative_path):
     if hasattr(sys, "_MEIPASS"):
-        return os.path.join(sys._MEIPASS, relative_path)
+        return os.path.join(sys._MEIPASS, relative_path) # type: ignore
     return os.path.join(os.path.abspath("."), relative_path)
 
 ui_path = resource_path("main_window.ui")
-Ui_MainWindow, BaseClass = loadUiType(ui_path)  # type: ignore
+Ui_MainWindow, BaseClass = loadUiType(ui_path) # type: ignore
 # ======================================
 
 class MainWindow(BaseClass, Ui_MainWindow):
@@ -29,6 +29,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
         self.btnCopyPass.clicked.connect(self.on_click_genpass_copy)
         self.btnOpenFileText.clicked.connect(self.on_click_open_file_text)
         self.btnSearchInFile.clicked.connect(self.on_click_seek_text)
+        self.lnEdSearchInFile.returnPressed.connect(self.btnSearchInFile.click)        
 
     def on_click_open_file_text(self):
         content = selectFile(self)
