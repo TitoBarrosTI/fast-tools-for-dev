@@ -75,10 +75,14 @@ def is_base64_image(data: str) -> bool:
     return False
 
 def selectFile(parent):
-    from PySide6.QtWidgets import QFileDialog
+    from PySide6.QtWidgets import QFileDialog, QMessageBox
     path, _ = QFileDialog.getOpenFileName(parent,'Choose a file','','All files (*.*)')
 
     if not path:
+        return None
+    
+    if not isTextFile(path):
+        QMessageBox.warning(parent, "Error", "File is not text")
         return None
     
     if path:
@@ -115,3 +119,13 @@ def seekText(pattern, data:str ):
         results.append(f'\n\n there may be more {(ocurrence-10)} ocurrences')
 
     return results
+
+def isTextFile(path):
+    with open(path, "rb") as f:
+        chunk = f.read(2048)
+    
+    try:
+        chunk.decode("utf-8")
+        return True
+    except UnicodeDecodeError:
+        return False
