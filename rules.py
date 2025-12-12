@@ -1,23 +1,44 @@
-def showBase64(self,b64_str,B64ImgDestiny):
+from PySide6.QtGui import QPixmap
+from PySide6.QtCore import QByteArray
+import base64
+
+def b64ToImage(self,b64_str,B64ImgDestiny):
     try:
-        import base64
         data = base64.b64decode(b64_str)
     except:
         print("Invalid base64")
         return
 
-    from PySide6.QtGui import QPixmap
-    from PySide6.QtCore import QByteArray
-
     pix = QPixmap()
-    pix.loadFromData(data)
-
-    if pix.isNull():
+    if not pix.loadFromData(data):
         print("Not is a valid image")
         return
     
     B64ImgDestiny.setPixmap(pix)
     B64ImgDestiny.setScaledContents(True)
+
+def imageFileToBase64(self, file_path):
+    import base64
+
+    with open(file_path, "rb") as img_file:
+        img_bytes = img_file.read()
+
+    return base64.b64encode(img_bytes).decode("utf-8")
+
+
+def obtainPixMap(self, filePath):
+    from PySide6.QtWidgets import QMessageBox
+
+    if not filePath:
+        return
+
+    pix = QPixmap(filePath)
+
+    if pix.isNull():
+        QMessageBox.warning(self, "Error", "Invalid image")
+        return
+    
+    return pix
 
 def generatePass(width=15,numbers=True,symbols=True,capitalLetters=True):
     import secrets
@@ -41,7 +62,7 @@ def generatePass(width=15,numbers=True,symbols=True,capitalLetters=True):
 
     return ''.join(secrets.choice(chars) for _ in range(width))
 
-def is_base64_image(data: str) -> bool:
+def isBase64Image(data: str) -> bool:
     if not isinstance(data, str):
         return False
 
@@ -88,6 +109,17 @@ def selectFile(parent):
     if path:
         with open(path,'r',encoding='utf-8', errors='ignore') as f:
             return f.read()
+
+def selectFileToHash(parent):
+    from PySide6.QtWidgets import QFileDialog, QMessageBox
+    path, _ = QFileDialog.getOpenFileName(parent,'Choose a file','','All files (*.*)')
+
+    if not path:
+        return None
+    
+    if path:
+        print("RETURN PATH: " + path)
+        return path
         
 def seekText(pattern, data:str ):
     if not isinstance(pattern, str) or not pattern or not isinstance(data, str) or not str:
@@ -129,3 +161,26 @@ def isTextFile(path):
         return True
     except UnicodeDecodeError:
         return False
+    
+def isImageFile(path):
+    import imghdr
+    return imghdr.what(path) is not None
+    
+import hashlib
+
+def genHash256(phrase: str):
+    return hashlib.sha256(phrase.encode('utf-8')).hexdigest()
+
+def genFileHash256(path: str) -> str:
+    print(path)
+    
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        while chunk := f.read(4096):  # read blocks of 4 KB
+            h.update(chunk)
+    return h.hexdigest()
+
+def b64_wrapped(widget, b64_str, line_width: int=120):
+    import textwrap
+    wrapped = "\n".join(textwrap.wrap(b64_str,line_width))
+    widget.setPlainText(wrapped)
