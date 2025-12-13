@@ -8,7 +8,7 @@
 ---
 
 ## 🔎 About  
-Fast Tools for Programming is a lightweight utility desktop app built with **Python + PySide6**.  
+Fast Tools for Devs is a lightweight utility desktop app built with **Python + PySide6**.  
 It provides quick-access tools developers often need during daily work: password generation, Base64 utilities, GUID creation, hashing, and text search.  
 Simple, clean, fast, and designed for productivity.
 
@@ -17,11 +17,9 @@ Simple, clean, fast, and designed for productivity.
 ## ✨ Features
 ```
 - Password generator  
-- GUID generator *(queued for development)*
-- Hash generator *(queued for development)*
+- Hash generator
 - Base64 file decoder + image preview  
-- Image → Base64 converter *(queued for development)*
-- Text search in `.txt` files *(under development)*
+- Image → Base64 converter
 ```
 
 ---
@@ -35,10 +33,14 @@ python main.py
 ```
 ---
 ## 📋 Requirements
-```
+
 Python 3.12
 PySide6
 Standard libraries: secrets, base64, os, sys
+
+To install all dependencies, run:
+```
+pip install -r requirements.txt
 ```
 ---
 
@@ -58,9 +60,6 @@ fast-tools-for-dev/
 ---
 ## 🛣️ Roadmap
  ```
- Password Generator
- Base64 Decoder
- Hash Generator
  Text Search Tool (under development)
  GUID Generator
  ```
