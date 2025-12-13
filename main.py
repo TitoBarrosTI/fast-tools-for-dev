@@ -3,7 +3,7 @@ import os
 
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction, QPixmap
-from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QMenu
+from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QMenu, QLabel
 from PySide6.QtUiTools import loadUiType
 from rules import b64ToImage, imageFileToBase64, obtainPixMap, generatePass, isBase64Image, isImageFile, selectFile, selectFileToHash, seekText, genHash256, genFileHash256, genHash, b64_wrapped, HashMode
 
@@ -45,6 +45,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
         # self.chbxIsFile.setEnabled(True)
         self.chbxIsFile.stateChanged.connect(self.on_click_toogle_button_get_file_for_crypto)        
 
+        self.tabWidget.setCurrentIndex(5)
         self.tabWidget.currentChanged.connect(self.updateIcon)
         self.updateIcon(self.tabWidget.currentIndex())
 
@@ -59,6 +60,8 @@ class MainWindow(BaseClass, Ui_MainWindow):
             self.lblIconHash.setPixmap(QPixmap("static/icons/padlock_50.png"))
         elif index == 4:
             self.lblIconFileText.setPixmap(QPixmap("static/icons/filetext_50.png"))
+        elif index == 5:
+            self.lblIconAbout.setPixmap(QPixmap("static/icons/about_50.png"))
 
     def menuCtxImgB64(self, pos):
         menu = QMenu(self)

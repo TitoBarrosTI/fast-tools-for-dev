@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Fast tool for programing</string>
+   <string>Fast tools for dev</string>
   </property>
   <property name="toolTip">
    <string/>
@@ -193,7 +193,20 @@
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>ICON</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblCaptionImgObtained_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>60</y>
+        <width>181</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Generated/Obtained base64:</string>
       </property>
      </widget>
     </widget>
@@ -222,12 +235,12 @@
        <rect>
         <x>20</x>
         <y>20</y>
-        <width>131</width>
+        <width>281</width>
         <height>31</height>
        </rect>
       </property>
       <property name="text">
-       <string>Generator of passwords</string>
+       <string>Generate unique identifiers (GUIDs)</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
@@ -243,7 +256,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>ICON</string>
       </property>
      </widget>
     </widget>
@@ -455,7 +468,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>ICON</string>
       </property>
      </widget>
     </widget>
@@ -670,7 +683,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>ICON</string>
       </property>
      </widget>
     </widget>
@@ -766,7 +779,182 @@
        </rect>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string>ICON</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab">
+     <attribute name="title">
+      <string>About</string>
+     </attribute>
+     <widget class="QLabel" name="lblIconAbout">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>0</y>
+        <width>81</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>ICON</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_3">
+      <property name="geometry">
+       <rect>
+        <x>286</x>
+        <y>80</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>20</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>About</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_4">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>150</y>
+        <width>621</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>A lightweight toolkit designed to simplify everyday developer tasks.
+Includes hash generation, GUID creation, Base64 utilities, password tools and more.</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>220</y>
+        <width>51</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Author: 
+Version: 
+GitHub: 
+LinkedIn:
+Email: 
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>220</y>
+        <width>151</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Tito de Barros Junior
+1.0.0
+</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>129</y>
+        <width>141</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>Fast Tools For Dev</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblGitHub">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>252</y>
+        <width>191</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;a href=&quot;https://github.com/TitoBarrosTI&quot;&gt;github.com/TitoBarrosTI&lt;/a&gt;</string>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblLinkedIn">
+      <property name="geometry">
+       <rect>
+        <x>78</x>
+        <y>268</y>
+        <width>190</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;a href=&quot;https://www.linkedin.com/in/titobarros/&quot;&gt;linkedin.com/in/titobarros/&lt;/a&gt;</string>
+      </property>
+      <property name="openExternalLinks">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblEmail">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>285</y>
+        <width>191</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;span&gt;titobarrosjr@hotmail.com&lt;/span&gt;</string>
+      </property>
+      <property name="openExternalLinks">
+       <bool>false</bool>
       </property>
      </widget>
     </widget>
