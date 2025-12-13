@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>793</width>
+    <height>552</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>10</y>
+      <y>0</y>
       <width>771</width>
       <height>491</height>
      </rect>
@@ -36,7 +36,7 @@
      <enum>Qt::LayoutDirection::LeftToRight</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab64">
      <attribute name="title">
@@ -47,7 +47,7 @@
        <rect>
         <x>20</x>
         <y>20</y>
-        <width>711</width>
+        <width>511</width>
         <height>31</height>
        </rect>
       </property>
@@ -183,6 +183,19 @@
        <string>Paste your Base64 code here</string>
       </property>
      </widget>
+     <widget class="QLabel" name="lblIconB64">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>0</y>
+        <width>81</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabguid">
      <property name="enabled">
@@ -218,6 +231,19 @@
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblIconGuid">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>0</y>
+        <width>81</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>
@@ -419,6 +445,19 @@
        <string>copy to clipboard</string>
       </property>
      </widget>
+     <widget class="QLabel" name="lblIconPass">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>0</y>
+        <width>81</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tabhash">
      <property name="enabled">
@@ -456,7 +495,7 @@
        <enum>Qt::Orientation::Horizontal</enum>
       </property>
      </widget>
-     <widget class="QListWidget" name="lstCryptoMode">
+     <widget class="QListWidget" name="lstHashMode">
       <property name="geometry">
        <rect>
         <x>20</x>
@@ -486,30 +525,33 @@
        </property>
       </item>
      </widget>
-     <widget class="QPushButton" name="btnGenCrypto">
+     <widget class="QPushButton" name="btnGenHash">
       <property name="enabled">
        <bool>false</bool>
       </property>
       <property name="geometry">
        <rect>
-        <x>20</x>
-        <y>310</y>
-        <width>79</width>
+        <x>148</x>
+        <y>290</y>
+        <width>121</width>
         <height>24</height>
        </rect>
       </property>
       <property name="text">
-       <string>Encrypt</string>
+       <string>Generate hash</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="edtHashGenerated">
+     <widget class="QLineEdit" name="edtGeneratedHash">
       <property name="geometry">
        <rect>
-        <x>110</x>
-        <y>310</y>
+        <x>150</x>
+        <y>380</y>
         <width>471</width>
         <height>21</height>
        </rect>
+      </property>
+      <property name="readOnly">
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QCheckBox" name="chbxIsFile">
@@ -519,7 +561,7 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>190</y>
+        <y>202</y>
         <width>121</width>
         <height>20</height>
        </rect>
@@ -531,13 +573,16 @@
        <string> get from a file</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnGetFileForCrypto">
+     <widget class="QPushButton" name="btnGetFileForHash">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>220</y>
+        <y>232</y>
         <width>121</width>
-        <height>24</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="toolTip">
@@ -547,21 +592,24 @@
        <string>get from a file</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="edtOriginEncrypt">
+     <widget class="QLineEdit" name="edtOriginHash">
       <property name="geometry">
        <rect>
         <x>147</x>
-        <y>221</y>
-        <width>431</width>
-        <height>21</height>
+        <y>233</y>
+        <width>471</width>
+        <height>51</height>
        </rect>
+      </property>
+      <property name="placeholderText">
+       <string>Load from file or input text</string>
       </property>
      </widget>
      <widget class="Line" name="line_6">
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>280</y>
+        <y>180</y>
         <width>571</width>
         <height>16</height>
        </rect>
@@ -574,13 +622,55 @@
       <property name="geometry">
        <rect>
         <x>20</x>
-        <y>60</y>
+        <y>67</y>
         <width>141</width>
         <height>16</height>
        </rect>
       </property>
       <property name="text">
-       <string>Select a encrypt mode:</string>
+       <string>Select a hash mode:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lbl_generated_hash">
+      <property name="geometry">
+       <rect>
+        <x>154</x>
+        <y>358</y>
+        <width>201</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Generated hash</string>
+      </property>
+      <property name="wordWrap">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCopyHash">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>405</y>
+        <width>121</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>copy to clipboard</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblIconHash">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>0</y>
+        <width>81</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>
@@ -622,7 +712,7 @@
        <rect>
         <x>20</x>
         <y>80</y>
-        <width>721</width>
+        <width>581</width>
         <height>341</height>
        </rect>
       </property>
@@ -666,6 +756,19 @@
        <string>input your search text here and press ENTER</string>
       </property>
      </widget>
+     <widget class="QLabel" name="lblIconFileText">
+      <property name="geometry">
+       <rect>
+        <x>660</x>
+        <y>0</y>
+        <width>81</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -674,7 +777,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>793</width>
      <height>33</height>
     </rect>
    </property>

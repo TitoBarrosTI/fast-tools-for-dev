@@ -2,7 +2,7 @@ import sys
 import os
 
 from PySide6.QtCore import Qt
-from PySide6.QtGui import QAction
+from PySide6.QtGui import QAction, QPixmap
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QMenu
 from PySide6.QtUiTools import loadUiType
 from rules import b64ToImage, imageFileToBase64, obtainPixMap, generatePass, isBase64Image, isImageFile, selectFile, selectFileToHash, seekText, genHash256, genFileHash256, genHash, b64_wrapped, HashMode
@@ -30,22 +30,35 @@ class MainWindow(BaseClass, Ui_MainWindow):
         self.btnGenB64.clicked.connect(self.on_click_gen_image_from_b64)
         self.lblImgB64.customContextMenuRequested.connect(self.menuCtxImgB64)
         self.btnObtainImg.clicked.connect(self.on_click_obtain_image)
-        
         # pass generator gadgets
         self.btnGenPass.clicked.connect(self.on_click_genpass)
         self.btnCopyPass.clicked.connect(self.on_click_genpass_copy)
-        
-        # open text file gadgets
-        self.btnOpenFileText.clicked.connect(self.on_click_open_file_text)
-        self.btnGenCrypto.clicked.connect(self.on_click_encrypt)
-        self.btnGenCrypto.setEnabled(True)
-
         # hash generator gadgets
-        self.btnGetFileForCrypto.clicked.connect(self.on_click_open_file_text_crypto)
+        self.btnGetFileForHash.clicked.connect(self.on_click_open_file_text_hash)
+        self.btnOpenFileText.clicked.connect(self.on_click_open_file_text)
+        self.btnGenHash.clicked.connect(self.on_click_hash)
+        self.btnGenHash.setEnabled(True)
+        # open text file gadgets
         self.btnSearchInFile.clicked.connect(self.on_click_seek_text)
         self.lnEdSearchInFile.returnPressed.connect(self.btnSearchInFile.click)
-        self.chbxIsFile.setEnabled(True)
+        self.btnCopyHash.clicked.connect(self.on_click_genhash_copy)
+        # self.chbxIsFile.setEnabled(True)
         self.chbxIsFile.stateChanged.connect(self.on_click_toogle_button_get_file_for_crypto)        
+
+        self.tabWidget.currentChanged.connect(self.updateIcon)
+        self.updateIcon(self.tabWidget.currentIndex())
+
+    def updateIcon(self, index):
+        if index == 0:
+            self.lblIconB64.setPixmap(QPixmap("static/icons/b64_50.png"))
+        if index == 1:
+            self.lblIconGuid.setPixmap(QPixmap("static/icons/guid_50.png"))            
+        if index == 2:
+            self.lblIconPass.setPixmap(QPixmap("static/icons/pass_50.png"))
+        elif index == 3:
+            self.lblIconHash.setPixmap(QPixmap("static/icons/padlock_50.png"))
+        elif index == 4:
+            self.lblIconFileText.setPixmap(QPixmap("static/icons/filetext_50.png"))
 
     def menuCtxImgB64(self, pos):
         menu = QMenu(self)
@@ -76,12 +89,12 @@ class MainWindow(BaseClass, Ui_MainWindow):
             self.btnGenB64.setEnabled(False)
         else: QMessageBox.warning(self,"No content","No images available to generate Base64 content.")
 
-    def on_click_encrypt(self):
-        # if not self.edtOriginEncrypt.text():
+    def on_click_hash(self):
+        # if not self.edtOriginHash.text():
         #     QMessageBox.information(self,'Warning','Any text for encrypt')
         #     return None
         
-        if self.lstCryptoMode.currentRow() == -1:
+        if self.lstHashMode.currentRow() == -1:
             QMessageBox.information(self,'Warning','Select a encrypt mode')
             return None
         else:
@@ -92,25 +105,28 @@ class MainWindow(BaseClass, Ui_MainWindow):
                 "MD5": HashMode.MD5,
             }
 
-            selected = self.lstCryptoMode.currentItem().text()
+            selected = self.lstHashMode.currentItem().text()
             mode = mode_map.get(selected)
 
             if mode:
-                result = genHash(self.edtOriginEncrypt.text(),mode)
-                self.edtHashGenerated.setText(result)
+                result = genHash(self.edtOriginHash.text(),mode)
+                self.edtGeneratedHash.setText(result)
+                self.lbl_generated_hash.setText('Generated hash: (from text)')
             
     def on_click_toogle_button_get_file_for_crypto(self, state) -> None:
-        self.btnGetFileForCrypto.setEnabled(state == Qt.CheckState.Checked)
+        self.btnGetFileForHash.setEnabled(bool(state))
     
     def on_click_open_file_text(self) -> None:
         content = selectFile(self)
         if content:
             self.textFile.setPlainText(content)
 
-    def on_click_open_file_text_crypto(self):
+    def on_click_open_file_text_hash(self):
         content = selectFileToHash(self)
         if content:
-            self.edtOriginEncrypt.setText(genFileHash256(content))
+            self.edtOriginHash.setText(content)
+            self.edtGeneratedHash.setText(genFileHash256(content))
+            self.lbl_generated_hash.setText('Generated hash: ** from file **')
 
     def on_click_seek_text(self):
         results = seekText(self.lnEdSearchInFile.text(), self.textFile.toPlainText())
@@ -156,6 +172,11 @@ class MainWindow(BaseClass, Ui_MainWindow):
         from PySide6.QtGui import QClipboard
         clipboard = QApplication.clipboard()
         clipboard.setText(self.edtGeneratedPass.text())
+
+    def on_click_genhash_copy(self):
+        from PySide6.QtGui import QClipboard
+        clipboard = QApplication.clipboard()
+        clipboard.setText(self.edtGeneratedHash.text())
 
 app = QApplication([])
 window = MainWindow()
