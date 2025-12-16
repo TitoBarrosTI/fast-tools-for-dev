@@ -1,10 +1,12 @@
 import os, sys
 
-# from PySide6.QtCore import Qt
 from PySide6.QtGui import QAction, QPixmap
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QMenu
 from PySide6.QtUiTools import loadUiType
-from rules import *
+from utils.hash_utils import *
+from utils.image_utils import *
+from utils.text_utils import *
+from utils.file_utils import *
 
 # === TO EMBED DESIGNER IN EXECUTABLE ===
 def resource_path(relative_path):
