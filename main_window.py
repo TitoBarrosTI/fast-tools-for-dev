@@ -7,6 +7,7 @@ from utils.hash_utils import *
 from utils.image_utils import *
 from utils.text_utils import *
 from utils.file_utils import *
+from utils.guid_utils import *
 
 # === TO EMBED DESIGNER IN EXECUTABLE ===
 def resource_path(relative_path):
@@ -109,7 +110,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
             mode = mode_map.get(selected)
 
             if mode:
-                result = genHash(self.edtOriginHash.text(),mode)
+                result = HashUtils.genHash(self.edtOriginHash.text(),mode)
                 self.edtGeneratedHash.setText(result)
 
                 if not self.edtOriginHash.text():
@@ -131,7 +132,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
         content = selectFileToHash(self)
         if content:
             self.edtOriginHash.setText(content)
-            self.edtGeneratedHash.setText(genFileHash256(content))
+            self.edtGeneratedHash.setText(HashUtils.genFileHash256(content))
             self.lbl_generated_hash.setText('Generated hash: ** from file **')
 
     def on_click_seek_text(self):
