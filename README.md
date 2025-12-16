@@ -52,7 +52,14 @@ pyinstaller --noconsole --onefile main.py
 ## 📁 Project Structure
 ```
 fast-tools-for-dev/
+├── utils/
+│   └── file_utils.py
+│   └── hash_utils.py
+│   └── image_utils.py
+│   └── text_utils.py
 ├── main.py
+├── main_window.py
+├── main_window.ui
 ├── requirements.txt
 ├── README.md
 ├── LICENSE
