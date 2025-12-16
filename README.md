@@ -36,6 +36,7 @@ python main.py
 
 Python 3.12
 PySide6
+Pillow 12.0.0
 Standard libraries: secrets, base64, os, sys
 
 To install all dependencies, run:

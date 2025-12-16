@@ -23,6 +23,20 @@ def isTextFile(path):
     except UnicodeDecodeError:
         return False
 
+# def isImageFile(path):
+#     import imghdr
+#     return imghdr.what(path) is not None
+
 def isImageFile(path):
-    import imghdr
-    return imghdr.what(path) is not None
+    import sys
+    # if sys.version_info < (3,13):
+    #     import imghdr
+    #     return imghdr.what(path) is not None
+
+    from PIL import Image
+    try:
+        with Image.open(path) as img:
+            img.verify()
+            return True
+    except (IOError, SyntaxError):
+        return False
