@@ -7,7 +7,7 @@ from utils.hash_utils import *
 from utils.image_utils import *
 from utils.text_utils import *
 from utils.file_utils import *
-from utils.guid_utils import *
+from utils.uuid_utils import *
 
 # === TO EMBED DESIGNER IN EXECUTABLE ===
 def resource_path(relative_path):
@@ -44,8 +44,10 @@ class MainWindow(BaseClass, Ui_MainWindow):
         self.btnSearchInFile.clicked.connect(self.on_click_seek_text)
         self.lnEdSearchInFile.returnPressed.connect(self.btnSearchInFile.click)
         self.btnCopyHash.clicked.connect(self.on_click_genhash_copy)
-        # self.chbxIsFile.setEnabled(True)
         self.chbxIsFile.stateChanged.connect(self.on_click_toogle_button_get_file_for_crypto)        
+        # uuid gadgets
+        self.btnGenUUID.clicked.connect(self.on_click_genuuid)
+        self.btnCopyUUID.clicked.connect(self.on_click_genuuid_copy)
 
         self.tabWidget.setCurrentIndex(5)
         self.tabWidget.currentChanged.connect(self.updateIcon)
@@ -55,7 +57,7 @@ class MainWindow(BaseClass, Ui_MainWindow):
         if index == 0:
             self.lblIconB64.setPixmap(QPixmap("static/icons/b64_50.png"))
         if index == 1:
-            self.lblIconGuid.setPixmap(QPixmap("static/icons/guid_50.png"))            
+            self.lblIconUUID.setPixmap(QPixmap("static/icons/guid_50.png"))            
         if index == 2:
             self.lblIconPass.setPixmap(QPixmap("static/icons/pass_50.png"))
         elif index == 3:
@@ -184,3 +186,10 @@ class MainWindow(BaseClass, Ui_MainWindow):
         from PySide6.QtGui import QClipboard
         clipboard = QApplication.clipboard()
         clipboard.setText(self.edtGeneratedHash.text())
+
+    def on_click_genuuid(self):
+        self.lnGeneratedUUID.setText(gen_uuid())
+    
+    def on_click_genuuid_copy(self):
+        clipboard = QApplication.clipboard()
+        clipboard.setText(self.lnGeneratedUUID.text())

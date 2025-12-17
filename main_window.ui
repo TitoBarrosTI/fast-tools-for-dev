@@ -210,12 +210,12 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tabguid">
+    <widget class="QWidget" name="tabuuid">
      <property name="enabled">
-      <bool>false</bool>
+      <bool>true</bool>
      </property>
      <attribute name="title">
-      <string>GUID generator</string>
+      <string>UUID generator</string>
      </attribute>
      <widget class="Line" name="line_4">
       <property name="geometry">
@@ -240,13 +240,13 @@
        </rect>
       </property>
       <property name="text">
-       <string>Generate unique identifiers (GUIDs)</string>
+       <string>Generate unique identifiers (UUIDs)</string>
       </property>
       <property name="alignment">
        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
       </property>
      </widget>
-     <widget class="QLabel" name="lblIconGuid">
+     <widget class="QLabel" name="lblIconUUID">
       <property name="geometry">
        <rect>
         <x>660</x>
@@ -257,6 +257,70 @@
       </property>
       <property name="text">
        <string>ICON</string>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lnGeneratedUUID">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>90</y>
+        <width>401</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="maxLength">
+       <number>36</number>
+      </property>
+      <property name="placeholderText">
+       <string>xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="lblCaptionImgObtained_3">
+      <property name="geometry">
+       <rect>
+        <x>13</x>
+        <y>74</y>
+        <width>181</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Generated/Obtained UUID:</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnGenUUID">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>110</y>
+        <width>101</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>generate UUID</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnCopyUUID">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>110</y>
+        <width>101</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>copy UUID</string>
       </property>
      </widget>
     </widget>
@@ -783,7 +847,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="tababout">
      <attribute name="title">
       <string>About</string>
      </attribute>
