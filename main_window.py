@@ -3,6 +3,7 @@ import os, sys
 from PySide6.QtGui import QAction, QPixmap
 from PySide6.QtWidgets import QApplication, QMainWindow, QMessageBox, QMenu
 from PySide6.QtUiTools import loadUiType
+import re
 from utils.hash_utils import *
 from utils.image_utils import *
 from utils.text_utils import *
@@ -178,18 +179,22 @@ class MainWindow(BaseClass, Ui_MainWindow):
         self.edtGeneratedPass.setText(generatePass(int(self.spinPass.text()),bool(self.chbxNumbers.isChecked()),bool(self.chbxSymbols.isChecked()),bool(self.chbxCapitalLetter.isChecked())))
 
     def on_click_genpass_copy(self):
-        from PySide6.QtGui import QClipboard
         clipboard = QApplication.clipboard()
         clipboard.setText(self.edtGeneratedPass.text())
-
+        if re.search(r'\S', clipboard.text()):
+            self.lblMsgStatus.setText('copied pass to clipboard!')
+    
     def on_click_genhash_copy(self):
-        from PySide6.QtGui import QClipboard
         clipboard = QApplication.clipboard()
         clipboard.setText(self.edtGeneratedHash.text())
-
+        if re.search(r'\S', clipboard.text()):
+            self.lblMsgStatus.setText('copied hash to clipboard!')
+    
     def on_click_genuuid(self):
         self.lnGeneratedUUID.setText(gen_uuid())
     
     def on_click_genuuid_copy(self):
         clipboard = QApplication.clipboard()
         clipboard.setText(self.lnGeneratedUUID.text())
+        if re.search(r'\S', clipboard.text()):
+            self.lblMsgStatus.setText('copied uuid to clipboard!')
