@@ -18,7 +18,7 @@ def seekText(pattern, data:str ):
             if ocurrence <= MAX_SHOW:
                 if ocurrence == 1:
                     results.append(
-                        f'Founded:\n\non the line {num_line}, collumn {pos}: {line}.strip()')
+                        f'Founded:\n\non the line {num_line}, collumn {pos}: {line}'.strip())
                 else:
                     results.append(f'on the line {num_line}, collumn {pos}: {line}'.strip())
             
